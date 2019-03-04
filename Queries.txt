@@ -1,0 +1,62 @@
+CREATE DATABASE grizzlystore;
+USE grizzlystore;
+
+CREATE TABLE `login` (
+
+ `userid` int(11) NOT NULL,
+  
+`username` varchar(45) NOT NULL,
+  
+`password` varchar(45) NOT NULL,
+  
+`failedattempts` int(11) NOT NULL,
+  
+KEY `userid_idx` (`userid`),
+  
+CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `userprofile` (`userid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+); 
+
+CREATE TABLE `product` (
+
+`product_id` INT NOT NULL AUTO_INCREMENT,
+  
+`product_name` VARCHAR(45) NOT NULL,
+  
+`product_category` VARCHAR(45) NOT NULL,
+  
+`product_description` VARCHAR(45) NOT NULL,
+  
+`product_price` INT NOT NULL,
+  
+`product_brand` VARCHAR(45) NOT NULL,
+  
+PRIMARY KEY (`product_id`));
+
+CREATE TABLE `product_brand` (
+  
+`brand_id` int(11) NOT NULL AUTO_INCREMENT,
+  
+`brand_name` varchar(45) NOT NULL,
+  
+PRIMARY KEY (`brand_id`)
+);
+
+CREATE TABLE `product_category` (
+  
+`category_id` int(11) NOT NULL AUTO_INCREMENT,
+  
+`category_name` varchar(45) NOT NULL,
+ 
+PRIMARY KEY (`category_id`);
+
+CREATE TABLE `userprofile` (
+  
+`userid` int(11) NOT NULL AUTO_INCREMENT,
+  
+`username` varchar(45) NOT NULL,
+  
+`designation` varchar(45) NOT NULL,
+  
+`office` varchar(45) NOT NULL,
+  
+PRIMARY KEY (`userid`);
